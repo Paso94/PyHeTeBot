@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # coding:utf-8
-
+print "Start!"
 # Modules
 import os  # system library needed to read the environment variables
 import requests  # library to make requests to telegram server
