@@ -6,8 +6,6 @@ import os  # system library needed to read the environment variables
 import requests  # library to make requests to telegram server
 import json  # library for evaluation of json file
 
-TOKEN_BOT = os.environ.get('TOKEN_BOT')  # Telegram token for the bot API
-
 
 class BotHandler:
     """ class with method used by the bot, for more details see
@@ -48,7 +46,7 @@ class BotHandler:
 
 
 # set variable used in main function
-pyhetebot = BotHandler(TOKEN_BOT)  # create the bot object
+pyhetebot = BotHandler(os.environ.get('TOKEN_BOT'))  # create the bot object
 
 
 def main():
