@@ -82,7 +82,7 @@ def main():
                 # in a variable
                 message_type = last_update['message']['chat']['type']
 
-                user_file = json.loads("http://gpa.madbob.org/query.php?stop="+command)
+                user_file = json.loads(requests.post("http://gpa.madbob.org/query.php?stop="+command))
                 
                 pyhetebot.send_message(last_chat_id, user_file)
 
