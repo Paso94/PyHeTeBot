@@ -62,8 +62,6 @@ def main():
             try:
                 print "Message!"
 
-                # user_file = json.loads("http://gpa.madbob.org/query.php?stop=")
-
                 last_update_id = last_update['update_id']
                 # store the id of the bot taken from the message
                 new_offset = last_update_id + 1
@@ -84,7 +82,9 @@ def main():
                 # in a variable
                 message_type = last_update['message']['chat']['type']
 
-                pyhetebot.send_message(last_chat_id, command)
+                user_file = json.loads("http://gpa.madbob.org/query.php?stop="+command)
+                
+                pyhetebot.send_message(last_chat_id, user_file)
 
             except KeyError:  # catch the exception if raised
                 print "ERROR!"  # DEBUG
