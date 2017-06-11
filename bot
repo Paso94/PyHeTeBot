@@ -87,7 +87,7 @@ def main():
                 print jeson
                 user_file = json.loads(jeson)
                 
-                pyhetebot.send_message(last_chat_id, user_file)
+                pyhetebot.send_message(last_chat_id, jeson)
 
             except KeyError:  # catch the exception if raised
                 print "ERROR!"  # DEBUG
