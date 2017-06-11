@@ -62,7 +62,7 @@ def main():
             try:
                 print "Message!"
 
-                user_file = json.loads("http://gpa.madbob.org/query.php?stop=")
+                # user_file = json.loads("http://gpa.madbob.org/query.php?stop=")
 
                 last_update_id = last_update['update_id']
                 # store the id of the bot taken from the message
