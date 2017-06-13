@@ -2,6 +2,7 @@ import requests
 import telepot
 import time
 from telepot.loop import MessageLoop
+from telepot.namedtuple import ReplyKeyboardMarkup, KeyboardButton
 import variables
 
 def handle(msg):
@@ -24,6 +25,8 @@ def handle(msg):
         message += '\nLinea ' + line + '\n' + lines[line]
     bot.sendMessage(chat_id, message, 'Markdown')
 
+    keyboard = ReplyKeyboardMarkup(keyboard=[KeyboardButton(text=command)])
+    bot.sendMessage(chat_id, keyboard)
     print 'Got command: %s' % command
 
 
