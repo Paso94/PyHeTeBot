@@ -25,7 +25,7 @@ def handle(msg):
     for line in lines.keys():
         message += '\nLinea ' + line + '\n' + lines[line]
 
-    keyboard = ReplyKeyboardMarkup(keyboard=[KeyboardButton(text=command), KeyboardButton(text='nulla!')])
+    keyboard = ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text=command)]])
     bot.sendMessage(chat_id, message, 'Markdown', reply_markup=keyboard)
 
     print 'Got command: %s' % command
