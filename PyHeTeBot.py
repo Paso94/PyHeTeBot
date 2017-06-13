@@ -23,10 +23,10 @@ def handle(msg):
             lines[bus['line']] += ' ' + rt_char + bus['hour'] + rt_char
     for line in lines.keys():
         message += '\nLinea ' + line + '\n' + lines[line]
-    bot.sendMessage(chat_id, message, 'Markdown')
 
     keyboard = ReplyKeyboardMarkup(keyboard=[KeyboardButton(text=command)])
-    bot.sendMessage(chat_id, keyboard)
+    bot.sendMessage(chat_id, message, 'Markdown', reply_markup=keyboard)
+
     print 'Got command: %s' % command
 
 
