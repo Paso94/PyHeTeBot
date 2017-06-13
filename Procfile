@@ -1,1 +1,1 @@
-worker: python PyHeTeBot
+worker: python PyHeTeBot.py
