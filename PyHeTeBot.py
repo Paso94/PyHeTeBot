@@ -54,7 +54,7 @@ def on_callback_query(msg):
     print('Callback Query:', query_id, from_id, query_data)
 
     if query_data == 'risk':
-        #  bot.editMessageText([query_id, from_id], ' Updated')
+        bot.editMessageText([msg['message']['chat']['id'], msg['message']['message_id']], ' Updated')
         bot.answerCallbackQuery(query_id, text='Risk')
 
 
