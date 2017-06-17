@@ -15,7 +15,7 @@ def handle(msg):
         keyboard = ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text=command), KeyboardButton(text='/roll')],
                                                  [KeyboardButton(text='3'), KeyboardButton(text='4')]])
     elif command == '/roll':
-        message = 'Start'
+        message = 'Roll'
         keyboard = ReplyKeyboardMarkup(keyboard=[[KeyboardButton(), KeyboardButton(text=command)],
                                                  [KeyboardButton(text='3'), KeyboardButton(text='4')]])
     else:
