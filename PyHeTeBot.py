@@ -1,6 +1,7 @@
 import requests
 import telepot
 import time
+from emoji import emojize
 from telepot.loop import MessageLoop
 from telepot.namedtuple import ReplyKeyboardMarkup, KeyboardButton
 from telepot.namedtuple import InlineKeyboardMarkup, InlineKeyboardButton
@@ -18,10 +19,13 @@ def on_chat_message(msg):
     elif command == '/roll':
         message = 'Roll'
         keyboard = InlineKeyboardMarkup(
-            inline_keyboard=[[InlineKeyboardButton(text=' ', callback_data='0'),
-                              InlineKeyboardButton(text=command, callback_data='1')],
-                             [InlineKeyboardButton(text='3', callback_data='2'),
-                              InlineKeyboardButton(text='4', callback_data='3')]])
+            inline_keyboard=[
+                [InlineKeyboardButton(text=emojize(':crossed_swords: 3 :shield: 3'), callback_data='risk'),
+                 InlineKeyboardButton(text=emojize(':crossed_swords: 2 :shield: 2'), callback_data='risk')],
+                [InlineKeyboardButton(text=emojize(':crossed_swords: 3 :shield: 2'), callback_data='risk'),
+                 InlineKeyboardButton(text=emojize(':crossed_swords: 2 :shield: 1'), callback_data='risk')],
+                [InlineKeyboardButton(text=emojize(':crossed_swords: 3 :shield: 1'), callback_data='risk'),
+                 InlineKeyboardButton(text=emojize(':crossed_swords: 1 :shield: 1'), callback_data='risk')]])
     else:
         url_gtt = "http://gpa.madbob.org/query.php?stop=" + command
         req = requests.get(url_gtt).json()
@@ -48,7 +52,8 @@ def on_callback_query(msg):
     query_id, from_id, query_data = telepot.glance(msg, flavor='callback_query')
     print('Callback Query:', query_id, from_id, query_data)
 
-    bot.answerCallbackQuery(query_id, text='Got it' + query_data)
+    if query_data == 'risk':
+        bot.answerCallbackQuery(query_id, text='Risk')
 
 
 bot = telepot.Bot(variables.TOKEN_BOT)
