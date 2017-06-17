@@ -34,8 +34,8 @@ def handle(msg):
         for line in lines.keys():
             message += '\nLinea ' + line + '\n' + lines[line]
 
-    keyboard = ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text=command), KeyboardButton(text='2')],
-                                             [KeyboardButton(text='3'), KeyboardButton(text='4')]])
+        keyboard = ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text=command), KeyboardButton(text='2')],
+                                                 [KeyboardButton(text='3'), KeyboardButton(text='4')]])
     bot.sendMessage(chat_id, message, 'Markdown', reply_markup=keyboard)
 
     print 'Got command: %s' % command
