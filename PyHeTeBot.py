@@ -14,11 +14,14 @@ def handle(msg):
     if command == '/start':
         message = 'Start'
         keyboard = ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text=command), KeyboardButton(text='/roll')],
-                                                 [KeyboardButton(text='3'), KeyboardButton(text='4')]])
+                                                 [KeyboardButton(text='/start'), KeyboardButton(text='4')]])
     elif command == '/roll':
         message = 'Roll'
-        keyboard = InlineKeyboardMarkup(keyboard=[[InlineKeyboardButton(text=' '), InlineKeyboardButton(text=command)],
-                                                  [InlineKeyboardButton(text='3'), InlineKeyboardButton(text='4')]])
+        keyboard = InlineKeyboardMarkup(
+            keyboard=[[InlineKeyboardButton(text=' ', callback_data='0'),
+                       InlineKeyboardButton(text=command, callback_data='1')],
+                      [InlineKeyboardButton(text='3', callback_data='2'),
+                       InlineKeyboardButton(text='4', callback_data='3')]])
     else:
         url_gtt = "http://gpa.madbob.org/query.php?stop=" + command
         req = requests.get(url_gtt).json()
@@ -35,7 +38,7 @@ def handle(msg):
         for line in lines.keys():
             message += '\nLinea ' + line + '\n' + lines[line]
 
-        keyboard = ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text=command), KeyboardButton(text='2')],
+        keyboard = ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text=command), KeyboardButton(text='/roll')],
                                                  [KeyboardButton(text='3'), KeyboardButton(text='4')]])
     bot.sendMessage(chat_id, message, 'Markdown', reply_markup=keyboard)
 
