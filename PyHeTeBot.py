@@ -3,6 +3,7 @@ import telepot
 import time
 from telepot.loop import MessageLoop
 from telepot.namedtuple import ReplyKeyboardMarkup, KeyboardButton
+from telepot.namedtuple import InlineKeyboardMarkup, InlineKeyboardButton
 import variables
 
 
@@ -16,8 +17,8 @@ def handle(msg):
                                                  [KeyboardButton(text='3'), KeyboardButton(text='4')]])
     elif command == '/roll':
         message = 'Roll'
-        keyboard = ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text=''), KeyboardButton(text=command)],
-                                                 [KeyboardButton(text='3'), KeyboardButton(text='4')]])
+        keyboard = InlineKeyboardMarkup(keyboard=[[InlineKeyboardButton(text=''), InlineKeyboardButton(text=command)],
+                                                  [InlineKeyboardButton(text='3'), InlineKeyboardButton(text='4')]])
     else:
         url_gtt = "http://gpa.madbob.org/query.php?stop=" + command
         req = requests.get(url_gtt).json()
