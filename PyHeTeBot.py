@@ -53,8 +53,8 @@ def on_callback_query(msg):
     print('Callback Query:', query_id, from_id, query_data)
 
     if query_data == 'risk':
+        bot.editMessageText(msg['inline_message_id'], msg['data'] + ' Update')
         bot.answerCallbackQuery(query_id, text='Risk')
-        bot.editMessageText(msg['inline_message_id'], msg['data'])
 
 
 bot = telepot.Bot(variables.TOKEN_BOT)
