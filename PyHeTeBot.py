@@ -18,10 +18,10 @@ def on_chat_message(msg):
     elif command == '/roll':
         message = 'Roll'
         keyboard = InlineKeyboardMarkup(
-            keyboard=[[InlineKeyboardButton(text=' ', callback_data='0'),
-                       InlineKeyboardButton(text=command, callback_data='1')],
-                      [InlineKeyboardButton(text='3', callback_data='2'),
-                       InlineKeyboardButton(text='4', callback_data='3')]])
+            inline_keyboard=[[InlineKeyboardButton(text=' ', callback_data='0'),
+                              InlineKeyboardButton(text=command, callback_data='1')],
+                             [InlineKeyboardButton(text='3', callback_data='2'),
+                              InlineKeyboardButton(text='4', callback_data='3')]])
     else:
         url_gtt = "http://gpa.madbob.org/query.php?stop=" + command
         req = requests.get(url_gtt).json()
@@ -38,10 +38,9 @@ def on_chat_message(msg):
         for line in lines.keys():
             message += '\nLinea ' + line + '\n' + lines[line]
 
-        keyboard = ReplyKeyboardMarkup(inline_keyboard=[[KeyboardButton(text=command), KeyboardButton(text='/roll')],
-                                                        [KeyboardButton(text='3'), KeyboardButton(text='4')]])
+        keyboard = ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text=command), KeyboardButton(text='/roll')],
+                                                 [KeyboardButton(text='3'), KeyboardButton(text='4')]])
     bot.sendMessage(chat_id, message, 'Markdown', reply_markup=keyboard)
-
     print 'Got command: %s' % command
 
 
